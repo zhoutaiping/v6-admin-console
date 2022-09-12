@@ -1,0 +1,57 @@
+image: docker.nodevops.cn/frontend/node-build:latest
+
+stages:
+  - build
+  - test
+  - pre
+  - deploy
+  - codereview
+
+compile:
+  stage: build
+  only:
+    - tester
+    - tags
+  before_script:
+    - git config --global http.sslVerify false
+    - npm install
+  script:
+    - npm run build
+  artifacts:
+    paths:
+      - dist/
+  cache:
+    paths:
+      - node_modules/
+
+sonar:
+  stage: codereview
+  only:
+    - schedules
+    - tester
+  script:
+    - sonar-scanner
+
+deploy to test:
+  stage: deploy
+  only:
+    - tester
+  environment:
+    name: test
+    url: http://adminv5.test.nodevops.cn
+  dependencies:
+    - compile
+  script:
+    - sonar-scanner
+    - rsync -rve ssh dist/* root@172.16.100.112:/data/www/v5-order-cli-tester/dist
+  when:
+    on_success
+
+deploy to pre:
+  stage: deploy
+  only:
+    - pre
+  script:
+    - rsync -rve ssh dist/* root@172.16.100.111:/data/www/v5-order-cli-pre/dist/
+  when:
+    on_success

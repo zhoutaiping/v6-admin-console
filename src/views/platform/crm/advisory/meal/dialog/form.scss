@@ -1,0 +1,72 @@
+.infoForm {
+  margin: 5px;
+  .infoForm-item {
+    margin-bottom: 5px;
+  }
+  .infoForm-item-inline {
+    margin-bottom: 5px;
+    display: inline-block;
+  }
+  .infoForm-input {
+    width: 200px;
+    display: inline-block;
+  }
+}
+.mt-5 {
+  margin-top: 5px;
+}
+
+.orderinfo {
+  .configdiv {
+    width: 100%;
+    float: left;
+    .center_div_title {
+      width: 150px;
+      margin-left: 5px;
+      display: inline-block;
+    }
+    .enter_div_value {
+      width: 180px;
+      height: 35px;
+      display: inline-block;
+    }
+  }
+}
+
+.form {
+  margin: 5px;
+}
+.form-item-b {
+  margin-bottom: 5px;
+  border-bottom: 0.5px solid rgba(0, 0, 0, 0.65);
+}
+.form-item {
+  margin-bottom: 5px;
+}
+.form-item-0 {
+  margin-bottom: 0px;
+}
+.form-input {
+  width: 250px;
+}
+.form-input-200 {
+  width: 170px;
+}
+.title_desc {
+  display: inline;
+}
+.title_right {
+  float: right;
+}
+.title-color {
+  color: #409eff;
+}
+.title-color-red {
+  color: #f56c6c;
+}
+.title-color-success {
+  color: #67C23A;
+}
+.inline-box {
+  display: inline-block;
+}
